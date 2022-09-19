@@ -1,0 +1,23 @@
+name: Analyze templates
+on:
+  push:
+    branches:
+    - origin/users/fabmas
+  # pull_request:
+  #   branches:
+  #   - origin/users/fabmas
+jobs:
+  analyze_arm:
+    name: Analyze templates
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v3
+
+    # Analyze Azure resources using PSRule for Azure
+    - name: Analyze Azure template files
+      uses: microsoft/ps-rule@v2.4.0
+      with:
+        modules: 'PSRule.Rules.Azure'
+        inputPath: ../modules/Microsoft.KeyVaults/vaults
+        baseline: Azure.GA_2022_06
