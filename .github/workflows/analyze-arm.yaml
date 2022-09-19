@@ -19,5 +19,5 @@ jobs:
       uses: microsoft/ps-rule@v2.4.0
       with:
         modules: 'PSRule.Rules.Azure'
-        inputPath: modules/Microsoft.KeyVaults/vaults
+        inputPath: modules/Microsoft.Network/
         # baseline: Azure.GA_2022_06
